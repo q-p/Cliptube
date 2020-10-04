@@ -62,6 +62,11 @@ class VideoDocument : NSWindowController, NSWindowDelegate {
 
   func windowWillClose(_ notification: Notification) {
     guard let parent = parent else { return }
+    self.playerView.player?.pause()
     parent.videos.remove(self)
+    if parent.videos.count == 0 {
+      cascadeOffset = 0 // let's start over
+    }
   }
+
 }
