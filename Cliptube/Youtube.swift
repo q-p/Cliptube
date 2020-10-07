@@ -8,6 +8,10 @@
 import XCDYouTubeKit
 import AVKit
 
+
+/// The canonical prefix for our YouTube document URL (completed by appending the ID).
+let ytCanonicalURLPrefix = "https://www.youtube.com/watch?v="
+
 // https://stackoverflow.com/questions/5830387/how-do-i-find-all-youtube-video-ids-in-a-string-using-a-regex/6901180#6901180
 private let ytRegex = try! NSRegularExpression(pattern: #"""
 (?xi)
@@ -44,6 +48,24 @@ func findVideoIDs(_ maybeUrls: String) -> Set<String> {
     }
   }
   return result
+}
+
+
+extension XCDYouTubeClient {
+
+  func blockingGetVideoWithIdentifier(_ videoIdentifier: String) throws -> XCDYouTubeVideo? {
+    guard let queue = self.value(forKey: "queue") as? OperationQueue else {
+      throw NSError(domain: "de.maven.Cliptube.ErrorDomain", code: -1, userInfo: nil)
+    }
+
+    let operation = XCDYouTubeVideoOperation(videoIdentifier: videoIdentifier, languageIdentifier: self.languageIdentifier)
+    queue.addOperations([operation], waitUntilFinished: true)
+
+    if operation.video != nil {
+      return operation.video
+    }
+    throw operation.error!
+  }
 }
 
 

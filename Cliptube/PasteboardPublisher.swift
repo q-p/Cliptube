@@ -9,6 +9,13 @@ import Foundation
 import Combine
 import AppKit
 
+let pbTypes: [NSPasteboard.PasteboardType] = [.string]
+
+func getPasteboardStringData(_ pasteboard: NSPasteboard) -> String? {
+  guard let bestType = pasteboard.availableType(from: pbTypes) else { return nil }
+  return pasteboard.string(forType: bestType)
+}
+
 
 /// String-Publisher for changes to NSPasteboard (published on the main-thread).
 class PasteboardPublisher: Publisher
@@ -71,13 +78,9 @@ class PasteboardPublisher: Publisher
 
       let actualChange = pasteboard.changeCount
       guard actualChange != changeCount else { return }
-
       changeCount = actualChange
 
-      let types: [NSPasteboard.PasteboardType] = [.string]
-      guard let bestType = pasteboard.availableType(from: types) else { return }
-      guard let string = pasteboard.string(forType: bestType) else { return }
-
+      guard let string = getPasteboardStringData(pasteboard) else { return }
       _ = downstream.receive(string)
     }
   }

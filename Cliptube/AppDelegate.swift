@@ -9,39 +9,65 @@ import AppKit
 import XCDYouTubeKit
 import Combine
 
+
+extension UserDefaults {
+  /// The key associated with the Watch Clipboard bool.
+  static let WatchClipboardKey = "WatchClipboard"
+  /// Synthesized variable for shouldWatchClipboard flag, backed by the UserDefaults instance.
+  var shouldWatchClipboard: Bool {
+    get { return self.bool(forKey: UserDefaults.WatchClipboardKey) }
+    set { self.set(newValue, forKey: UserDefaults.WatchClipboardKey) }
+  }
+  /// Registers the defaults for Cliptube.
+  func registerMyDefaults() {
+    self.register(defaults: [
+      UserDefaults.WatchClipboardKey: true,
+    ])
+  }
+}
+
+
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-  var pbWatcher: AnyCancellable?
-  var videos = Set<VideoDocument>()
+  @IBOutlet var watchClipboardMenuItem : NSMenuItem!
 
-  func applicationDidFinishLaunching(_ aNotification: Notification) {
-    pbWatcher = PasteboardPublisher().sink { maybeUrls in
-      for id in findVideoIDs(maybeUrls) {
+  let dc = DocumentController() // ensure the shared instance will be this one
+  var pbWatcher: AnyCancellable? // our pasteboard watcher
 
-        if let existingDocument = self.videos.first(where: { $0.video.identifier == id }) {
-          existingDocument.window?.makeKeyAndOrderFront(self)
-          continue
-        }
 
-        XCDYouTubeClient.default().getVideoWithIdentifier(id) { [weak self] (video, error) in
-          guard let self = self else { return }
-          if let video = video, let asset = getAVAsset(video: video) {
-            let newVideo = VideoDocument(video: video, asset: asset, parent: self)
-            self.videos.insert(newVideo)
-            newVideo.showWindow(self)
-          } else if let error = error {
-            print(error.localizedDescription)
-          }
+  /// Enables or disables clipboard watching depending on the argument, and sets the menu item appropriately.
+  func updateWatcher(shouldWatch: Bool) {
+    if shouldWatch {
+      watchClipboardMenuItem.state = .on
+      if pbWatcher == nil {
+        pbWatcher = PasteboardPublisher().sink { maybeURLs in
+          self.dc.openAllVideos(maybeURLs: maybeURLs, display: true)
         }
       }
+    } else {
+      watchClipboardMenuItem.state = .off
+      pbWatcher = nil
     }
+  }
+
+
+  func applicationDidFinishLaunching(_ aNotification: Notification) {
+    let defaults = UserDefaults.standard
+    defaults.registerMyDefaults()
+    let shouldWatchClipboard = defaults.shouldWatchClipboard
+    updateWatcher(shouldWatch: shouldWatchClipboard)
   }
 
   func applicationWillTerminate(_ aNotification: Notification) {
     pbWatcher = nil
-    videos.removeAll()
+  }
+
+
+  @IBAction func toggleWatchClipBoard(sender: NSMenuItem) {
+    let shouldWatchClipboard = sender.state == .off // we invert the current state to obtain the desired state
+    UserDefaults.standard.shouldWatchClipboard = shouldWatchClipboard
+    updateWatcher(shouldWatch: shouldWatchClipboard)
   }
 
 }
-
