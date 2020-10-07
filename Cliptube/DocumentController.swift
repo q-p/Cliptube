@@ -9,47 +9,44 @@ import AppKit
 
 class DocumentController: NSDocumentController {
 
-  // allows use of open with non-file URL
-  override func typeForContents(of url: URL) throws -> String {
-    return "public.mpeg-4"
-  }
-
-
-  override func openDocument(withContentsOf url: URL, display displayDocument: Bool, completionHandler: @escaping (NSDocument?, Bool, Error?) -> Void) {
-    // see whether it's already open
-    for otherDoc in documents {
-      guard let otherDoc = otherDoc as? Document, let otherURL = otherDoc.ytURL else { continue }
-      if url == otherURL {
-        if displayDocument {
-          otherDoc.showWindows()
+  // opens an untitled document (unsaved) for a remote URL
+  func openUntitledDocument(withContentsOf url: URL, display displayDocument: Bool) {
+    // let's not block the main thread
+    DispatchQueue.global(qos: .default).async {
+      do {
+        let document = try self.makeDocument(for: nil, withContentsOf: url, ofType: "public.url") as! Document
+        DispatchQueue.main.async {
+//          document.updateChangeCount(.changeCleared)
+          self.addDocument(document)
+          if displayDocument {
+            DispatchQueue.main.async {
+              document.makeWindowControllers()
+              document.showWindows()
+            }
+          }
         }
-        return
+      } catch let error as NSError {
+        DispatchQueue.main.async {
+          var userInfo:Dictionary<String, Any> = [NSLocalizedDescriptionKey: "The document “\(url)” could not be opened."]
+          if let underlyingError = error.userInfo[NSUnderlyingErrorKey] as? Error {
+            userInfo[NSLocalizedRecoverySuggestionErrorKey] = underlyingError.localizedDescription
+          }
+          userInfo.merge(error.userInfo) {(current, _) in current}
+          self.presentError(NSError(domain: error.domain, code: error.code, userInfo: userInfo))
+        }
       }
     }
-    // otherwise let super deal with actually loading it :)
-    super.openDocument(withContentsOf: url, display: displayDocument, completionHandler: completionHandler)
   }
 
-
-  // similar behavior to openDocument(), but display any error on failure
-  func openVideo(url: URL, display: Bool) {
-    openDocument(withContentsOf: url, display: display, completionHandler: { (document, documentWasAlreadyOpen, error) in
-      if document == nil, let error = error as NSError? {
-        var userInfo:Dictionary<String, Any> = [NSLocalizedDescriptionKey: "The document “\(url)” could not be opened."]
-
-        if let underlyingError = error.userInfo[NSUnderlyingErrorKey] as? Error {
-          userInfo[NSLocalizedRecoverySuggestionErrorKey] = underlyingError.localizedDescription
-        }
-        userInfo.merge(error.userInfo) {(current, _) in current}
-        self.presentError(NSError(domain: error.domain, code: error.code, userInfo: userInfo))
-      }
-    })
+  // we identify the document by its youtube URL
+  override func document(for url: URL) -> NSDocument? {
+    return documents.first(where: { ($0 as! Document).ytURL == url })
   }
 
   func openAllVideos(maybeURLs: String, display: Bool) {
     for id in findVideoIDs(maybeURLs) {
       guard let url = URL(string: ytCanonicalURLPrefix + id) else { continue }
-      openVideo(url: url, display: true)
+      openUntitledDocument(withContentsOf: url, display: true)
     }
   }
 

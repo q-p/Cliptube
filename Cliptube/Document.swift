@@ -31,12 +31,6 @@ class Document: NSDocument {
     set { }
   }
 
-  // disables the icon and path display in the titlebar (which doesn't work properly for non-file URLs)
-  override var fileURL: URL? {
-    get { return nil }
-    set { ytURL = newValue }
-  }
-
 
   override func read(from url: URL, ofType typeName: String) throws {
     guard let id = findVideoIDs(url.absoluteString).first else {
@@ -50,6 +44,16 @@ class Document: NSDocument {
         NSLocalizedDescriptionKey: "Couldn't obtain AVAsset for video"])
     }
     self.asset = asset
+    self.ytURL = url
   }
+
+  override func data(ofType typeName: String) throws -> Data {
+    return Data(ytURL!.absoluteString.utf8)
+  }
+
+//  override func write(to url: URL, ofType typeName: String) throws {
+//    let urlString = ytURL!.absoluteString
+//    try urlString.write(to: url, atomically: false, encoding: .utf8)
+//  }
 
 }

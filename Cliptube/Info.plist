@@ -13,7 +13,7 @@
 			<string>None</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>public.mpeg-4</string>
+				<string>public.url</string>
 			</array>
 			<key>NSDocumentClass</key>
 			<string>$(PRODUCT_MODULE_NAME).Document</string>
