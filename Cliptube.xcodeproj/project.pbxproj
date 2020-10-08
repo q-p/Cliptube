@@ -10,7 +10,7 @@
 		8A7D867A252BC14A00069CF3 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D8675252BC13800069CF3 /* AVKit.framework */; };
 		8ACFF3F7252B8135007B2FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF3F6252B8135007B2FB4 /* AppDelegate.swift */; };
 		8ACFF3F9252B8135007B2FB4 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF3F8252B8135007B2FB4 /* Document.swift */; };
-		8ACFF3FC252B8135007B2FB4 /* DocumentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACFF3FA252B8135007B2FB4 /* DocumentView.xib */; };
+		8ACFF3FC252B8135007B2FB4 /* DocumentWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACFF3FA252B8135007B2FB4 /* DocumentWindow.xib */; };
 		8ACFF3FE252B8136007B2FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ACFF3FD252B8136007B2FB4 /* Assets.xcassets */; };
 		8ACFF401252B8136007B2FB4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACFF3FF252B8136007B2FB4 /* MainMenu.xib */; };
 		8ACFF40D252B8136007B2FB4 /* CliptubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF40C252B8136007B2FB4 /* CliptubeTests.swift */; };
@@ -45,7 +45,7 @@
 		8ACFF3F3252B8135007B2FB4 /* Cliptube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cliptube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACFF3F6252B8135007B2FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ACFF3F8252B8135007B2FB4 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
-		8ACFF3FB252B8135007B2FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DocumentView.xib; sourceTree = "<group>"; };
+		8ACFF3FB252B8135007B2FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/DocumentWindow.xib; sourceTree = "<group>"; };
 		8ACFF3FD252B8136007B2FB4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8ACFF400252B8136007B2FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8ACFF402252B8136007B2FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -130,7 +130,7 @@
 				8ACFF47B252B8EF9007B2FB4 /* DocumentController.swift */,
 				8ACFF3F8252B8135007B2FB4 /* Document.swift */,
 				8ACFF480252B9060007B2FB4 /* WindowController.swift */,
-				8ACFF3FA252B8135007B2FB4 /* DocumentView.xib */,
+				8ACFF3FA252B8135007B2FB4 /* DocumentWindow.xib */,
 				8ACFF42C252B840A007B2FB4 /* PasteboardPublisher.swift */,
 				8ACFF42B252B840A007B2FB4 /* Youtube.swift */,
 			);
@@ -265,7 +265,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8ACFF3FE252B8136007B2FB4 /* Assets.xcassets in Resources */,
-				8ACFF3FC252B8135007B2FB4 /* DocumentView.xib in Resources */,
+				8ACFF3FC252B8135007B2FB4 /* DocumentWindow.xib in Resources */,
 				8ACFF401252B8136007B2FB4 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -332,12 +332,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		8ACFF3FA252B8135007B2FB4 /* DocumentView.xib */ = {
+		8ACFF3FA252B8135007B2FB4 /* DocumentWindow.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				8ACFF3FB252B8135007B2FB4 /* Base */,
 			);
-			name = DocumentView.xib;
+			name = DocumentWindow.xib;
 			sourceTree = "<group>";
 		};
 		8ACFF3FF252B8136007B2FB4 /* MainMenu.xib */ = {
