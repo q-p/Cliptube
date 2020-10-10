@@ -71,6 +71,7 @@ extension UserDefaults {
   func registerMyDefaults() {
     self.register(defaults: [
       UserDefaults.WatchClipboardKey: true,
+//      "NSQuitAlwaysKeepsWindows": true,
     ])
   }
 }

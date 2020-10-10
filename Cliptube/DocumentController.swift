@@ -14,32 +14,28 @@ class DocumentController: NSDocumentController {
     return documents.first(where: { ($0 as! Document).ytURL == url })
   }
 
+  override func typeForContents(of url: URL) throws -> String {
+    return url.isFileURL ? "public.plain-text" : "public.url"
+  }
+
   // opens an untitled document (unsaved) for a remote URL
   func openUntitledDocument(withContentsOf url: URL, display displayDocument: Bool) {
-    guard document(for: url) == nil else { return }
-    // let's not block the main thread
-    DispatchQueue.global(qos: .default).async {
-      do {
-        let document = try self.makeDocument(for: nil, withContentsOf: url, ofType: "public.plain-text") as! Document
-        DispatchQueue.main.async {
-          document.updateChangeCount(.changeCleared)
-          self.addDocument(document)
-          if displayDocument {
-            DispatchQueue.main.async {
-              document.makeWindowControllers()
-              document.showWindows()
-            }
-          }
+//    openDocument(withContentsOf: url, display: true) { (document, wasAlreadyOpen, error) in
+    reopenDocument(for: nil, withContentsOf: url, display: true) { (document, wasAlreadyOpen, error) in
+      if let document = document, !wasAlreadyOpen {
+        let document = document as! Document
+        document.updateChangeCount(.changeReadOtherContents)
+      }
+
+      if let error = error {
+        let error = error as NSError
+        var userInfo:Dictionary<String, Any> = [NSLocalizedDescriptionKey: "The document “\(url)” could not be opened."]
+        if let underlyingError = error.userInfo[NSUnderlyingErrorKey] as? NSError {
+          userInfo[NSLocalizedRecoverySuggestionErrorKey] = underlyingError.localizedDescription
+          userInfo.merge(underlyingError.userInfo) {(current, _) in current}
         }
-      } catch let error as NSError {
-        DispatchQueue.main.async {
-          var userInfo:Dictionary<String, Any> = [NSLocalizedDescriptionKey: "The document “\(url)” could not be opened."]
-          if let underlyingDescription = error.userInfo[NSLocalizedDescriptionKey] as? String {
-            userInfo[NSLocalizedRecoverySuggestionErrorKey] = underlyingDescription
-          }
-          userInfo.merge(error.userInfo) {(current, _) in current}
-          self.presentError(NSError(domain: error.domain, code: error.code, userInfo: userInfo))
-        }
+        userInfo.merge(error.userInfo) {(current, _) in current}
+        self.presentError(NSError(domain: error.domain, code: error.code, userInfo: userInfo))
       }
     }
   }
