@@ -8,20 +8,6 @@
 	<array>
 		<dict>
 			<key>CFBundleTypeName</key>
-			<string>YouTube Video URL</string>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>LSHandlerRank</key>
-			<string>None</string>
-			<key>LSItemContentTypes</key>
-			<array>
-				<string>public.plain-text</string>
-			</array>
-			<key>NSDocumentClass</key>
-			<string>$(PRODUCT_MODULE_NAME).Document</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeName</key>
 			<string>YouTube Video</string>
 			<key>CFBundleTypeRole</key>
 			<string>Viewer</string>
@@ -61,5 +47,7 @@
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSHumanReadableCopyright</key>
+	<string>Copyright © 2020 Daniel Vollmer (code@maven.de). All rights reserved.</string>
 </dict>
 </plist>

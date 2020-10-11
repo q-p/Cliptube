@@ -8,13 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		8A7D867A252BC14A00069CF3 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D8675252BC13800069CF3 /* AVKit.framework */; };
+		8AB871CF2531BDC600112915 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB871CE2531BDC600112915 /* History.swift */; };
 		8ACFF3F7252B8135007B2FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF3F6252B8135007B2FB4 /* AppDelegate.swift */; };
 		8ACFF3F9252B8135007B2FB4 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF3F8252B8135007B2FB4 /* Document.swift */; };
 		8ACFF3FC252B8135007B2FB4 /* DocumentWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACFF3FA252B8135007B2FB4 /* DocumentWindow.xib */; };
 		8ACFF3FE252B8136007B2FB4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8ACFF3FD252B8136007B2FB4 /* Assets.xcassets */; };
 		8ACFF401252B8136007B2FB4 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8ACFF3FF252B8136007B2FB4 /* MainMenu.xib */; };
-		8ACFF40D252B8136007B2FB4 /* CliptubeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF40C252B8136007B2FB4 /* CliptubeTests.swift */; };
-		8ACFF418252B8136007B2FB4 /* CliptubeUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF417252B8136007B2FB4 /* CliptubeUITests.swift */; };
 		8ACFF42D252B840A007B2FB4 /* Youtube.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF42B252B840A007B2FB4 /* Youtube.swift */; };
 		8ACFF42E252B840A007B2FB4 /* PasteboardPublisher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF42C252B840A007B2FB4 /* PasteboardPublisher.swift */; };
 		8ACFF434252B850B007B2FB4 /* XCDYouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8ACFF433252B850B007B2FB4 /* XCDYouTubeKit */; };
@@ -22,26 +21,10 @@
 		8ACFF481252B9060007B2FB4 /* WindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF480252B9060007B2FB4 /* WindowController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		8ACFF409252B8136007B2FB4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8ACFF3EB252B8135007B2FB4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8ACFF3F2252B8135007B2FB4;
-			remoteInfo = Cliptube;
-		};
-		8ACFF414252B8136007B2FB4 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 8ACFF3EB252B8135007B2FB4 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 8ACFF3F2252B8135007B2FB4;
-			remoteInfo = Cliptube;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		8A7D8670252BC12500069CF3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8A7D8675252BC13800069CF3 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		8AB871CE2531BDC600112915 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		8ACFF3F3252B8135007B2FB4 /* Cliptube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cliptube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACFF3F6252B8135007B2FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8ACFF3F8252B8135007B2FB4 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
@@ -50,12 +33,6 @@
 		8ACFF400252B8136007B2FB4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		8ACFF402252B8136007B2FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ACFF403252B8136007B2FB4 /* Cliptube.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Cliptube.entitlements; sourceTree = "<group>"; };
-		8ACFF408252B8136007B2FB4 /* CliptubeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CliptubeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8ACFF40C252B8136007B2FB4 /* CliptubeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliptubeTests.swift; sourceTree = "<group>"; };
-		8ACFF40E252B8136007B2FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8ACFF413252B8136007B2FB4 /* CliptubeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CliptubeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8ACFF417252B8136007B2FB4 /* CliptubeUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CliptubeUITests.swift; sourceTree = "<group>"; };
-		8ACFF419252B8136007B2FB4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8ACFF42B252B840A007B2FB4 /* Youtube.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Youtube.swift; sourceTree = "<group>"; };
 		8ACFF42C252B840A007B2FB4 /* PasteboardPublisher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PasteboardPublisher.swift; sourceTree = "<group>"; };
 		8ACFF47B252B8EF9007B2FB4 /* DocumentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentController.swift; sourceTree = "<group>"; };
@@ -69,20 +46,6 @@
 			files = (
 				8A7D867A252BC14A00069CF3 /* AVKit.framework in Frameworks */,
 				8ACFF434252B850B007B2FB4 /* XCDYouTubeKit in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8ACFF405252B8136007B2FB4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8ACFF410252B8136007B2FB4 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,8 +65,6 @@
 			children = (
 				8A7D8670252BC12500069CF3 /* README.md */,
 				8ACFF3F5252B8135007B2FB4 /* Cliptube */,
-				8ACFF40B252B8136007B2FB4 /* CliptubeTests */,
-				8ACFF416252B8136007B2FB4 /* CliptubeUITests */,
 				8ACFF3F4252B8135007B2FB4 /* Products */,
 				8A7D8674252BC13800069CF3 /* Frameworks */,
 			);
@@ -113,8 +74,6 @@
 			isa = PBXGroup;
 			children = (
 				8ACFF3F3252B8135007B2FB4 /* Cliptube.app */,
-				8ACFF408252B8136007B2FB4 /* CliptubeTests.xctest */,
-				8ACFF413252B8136007B2FB4 /* CliptubeUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -122,37 +81,20 @@
 		8ACFF3F5252B8135007B2FB4 /* Cliptube */ = {
 			isa = PBXGroup;
 			children = (
-				8ACFF3FD252B8136007B2FB4 /* Assets.xcassets */,
-				8ACFF402252B8136007B2FB4 /* Info.plist */,
-				8ACFF403252B8136007B2FB4 /* Cliptube.entitlements */,
 				8ACFF3F6252B8135007B2FB4 /* AppDelegate.swift */,
-				8ACFF3FF252B8136007B2FB4 /* MainMenu.xib */,
-				8ACFF47B252B8EF9007B2FB4 /* DocumentController.swift */,
+				8ACFF3FD252B8136007B2FB4 /* Assets.xcassets */,
+				8ACFF403252B8136007B2FB4 /* Cliptube.entitlements */,
 				8ACFF3F8252B8135007B2FB4 /* Document.swift */,
-				8ACFF480252B9060007B2FB4 /* WindowController.swift */,
+				8ACFF47B252B8EF9007B2FB4 /* DocumentController.swift */,
 				8ACFF3FA252B8135007B2FB4 /* DocumentWindow.xib */,
+				8AB871CE2531BDC600112915 /* History.swift */,
+				8ACFF402252B8136007B2FB4 /* Info.plist */,
+				8ACFF3FF252B8136007B2FB4 /* MainMenu.xib */,
 				8ACFF42C252B840A007B2FB4 /* PasteboardPublisher.swift */,
+				8ACFF480252B9060007B2FB4 /* WindowController.swift */,
 				8ACFF42B252B840A007B2FB4 /* Youtube.swift */,
 			);
 			path = Cliptube;
-			sourceTree = "<group>";
-		};
-		8ACFF40B252B8136007B2FB4 /* CliptubeTests */ = {
-			isa = PBXGroup;
-			children = (
-				8ACFF40C252B8136007B2FB4 /* CliptubeTests.swift */,
-				8ACFF40E252B8136007B2FB4 /* Info.plist */,
-			);
-			path = CliptubeTests;
-			sourceTree = "<group>";
-		};
-		8ACFF416252B8136007B2FB4 /* CliptubeUITests */ = {
-			isa = PBXGroup;
-			children = (
-				8ACFF417252B8136007B2FB4 /* CliptubeUITests.swift */,
-				8ACFF419252B8136007B2FB4 /* Info.plist */,
-			);
-			path = CliptubeUITests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -178,42 +120,6 @@
 			productReference = 8ACFF3F3252B8135007B2FB4 /* Cliptube.app */;
 			productType = "com.apple.product-type.application";
 		};
-		8ACFF407252B8136007B2FB4 /* CliptubeTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8ACFF41F252B8136007B2FB4 /* Build configuration list for PBXNativeTarget "CliptubeTests" */;
-			buildPhases = (
-				8ACFF404252B8136007B2FB4 /* Sources */,
-				8ACFF405252B8136007B2FB4 /* Frameworks */,
-				8ACFF406252B8136007B2FB4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8ACFF40A252B8136007B2FB4 /* PBXTargetDependency */,
-			);
-			name = CliptubeTests;
-			productName = CliptubeTests;
-			productReference = 8ACFF408252B8136007B2FB4 /* CliptubeTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		8ACFF412252B8136007B2FB4 /* CliptubeUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 8ACFF422252B8136007B2FB4 /* Build configuration list for PBXNativeTarget "CliptubeUITests" */;
-			buildPhases = (
-				8ACFF40F252B8136007B2FB4 /* Sources */,
-				8ACFF410252B8136007B2FB4 /* Frameworks */,
-				8ACFF411252B8136007B2FB4 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				8ACFF415252B8136007B2FB4 /* PBXTargetDependency */,
-			);
-			name = CliptubeUITests;
-			productName = CliptubeUITests;
-			productReference = 8ACFF413252B8136007B2FB4 /* CliptubeUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -225,14 +131,6 @@
 				TargetAttributes = {
 					8ACFF3F2252B8135007B2FB4 = {
 						CreatedOnToolsVersion = 12.0.1;
-					};
-					8ACFF407252B8136007B2FB4 = {
-						CreatedOnToolsVersion = 12.0.1;
-						TestTargetID = 8ACFF3F2252B8135007B2FB4;
-					};
-					8ACFF412252B8136007B2FB4 = {
-						CreatedOnToolsVersion = 12.0.1;
-						TestTargetID = 8ACFF3F2252B8135007B2FB4;
 					};
 				};
 			};
@@ -253,8 +151,6 @@
 			projectRoot = "";
 			targets = (
 				8ACFF3F2252B8135007B2FB4 /* Cliptube */,
-				8ACFF407252B8136007B2FB4 /* CliptubeTests */,
-				8ACFF412252B8136007B2FB4 /* CliptubeUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -270,20 +166,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8ACFF406252B8136007B2FB4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8ACFF411252B8136007B2FB4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -293,6 +175,7 @@
 			files = (
 				8ACFF42D252B840A007B2FB4 /* Youtube.swift in Sources */,
 				8ACFF481252B9060007B2FB4 /* WindowController.swift in Sources */,
+				8AB871CF2531BDC600112915 /* History.swift in Sources */,
 				8ACFF3F9252B8135007B2FB4 /* Document.swift in Sources */,
 				8ACFF3F7252B8135007B2FB4 /* AppDelegate.swift in Sources */,
 				8ACFF47C252B8EF9007B2FB4 /* DocumentController.swift in Sources */,
@@ -300,36 +183,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		8ACFF404252B8136007B2FB4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8ACFF40D252B8136007B2FB4 /* CliptubeTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8ACFF40F252B8136007B2FB4 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				8ACFF418252B8136007B2FB4 /* CliptubeUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		8ACFF40A252B8136007B2FB4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8ACFF3F2252B8135007B2FB4 /* Cliptube */;
-			targetProxy = 8ACFF409252B8136007B2FB4 /* PBXContainerItemProxy */;
-		};
-		8ACFF415252B8136007B2FB4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 8ACFF3F2252B8135007B2FB4 /* Cliptube */;
-			targetProxy = 8ACFF414252B8136007B2FB4 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		8ACFF3FA252B8135007B2FB4 /* DocumentWindow.xib */ = {
@@ -508,90 +362,6 @@
 			};
 			name = Release;
 		};
-		8ACFF420252B8136007B2FB4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 785W67QY73;
-				INFOPLIST_FILE = CliptubeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = de.maven.CliptubeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cliptube.app/Contents/MacOS/Cliptube";
-			};
-			name = Debug;
-		};
-		8ACFF421252B8136007B2FB4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 785W67QY73;
-				INFOPLIST_FILE = CliptubeTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				MACOSX_DEPLOYMENT_TARGET = 10.15;
-				PRODUCT_BUNDLE_IDENTIFIER = de.maven.CliptubeTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Cliptube.app/Contents/MacOS/Cliptube";
-			};
-			name = Release;
-		};
-		8ACFF423252B8136007B2FB4 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 785W67QY73;
-				INFOPLIST_FILE = CliptubeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.maven.CliptubeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Cliptube;
-			};
-			name = Debug;
-		};
-		8ACFF424252B8136007B2FB4 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 785W67QY73;
-				INFOPLIST_FILE = CliptubeUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/../Frameworks",
-					"@loader_path/../Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = de.maven.CliptubeUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TEST_TARGET_NAME = Cliptube;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -609,24 +379,6 @@
 			buildConfigurations = (
 				8ACFF41D252B8136007B2FB4 /* Debug */,
 				8ACFF41E252B8136007B2FB4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8ACFF41F252B8136007B2FB4 /* Build configuration list for PBXNativeTarget "CliptubeTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8ACFF420252B8136007B2FB4 /* Debug */,
-				8ACFF421252B8136007B2FB4 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		8ACFF422252B8136007B2FB4 /* Build configuration list for PBXNativeTarget "CliptubeUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				8ACFF423252B8136007B2FB4 /* Debug */,
-				8ACFF424252B8136007B2FB4 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

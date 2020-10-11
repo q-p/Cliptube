@@ -8,9 +8,11 @@
 import AppKit
 import AVKit
 
-class WindowController: NSWindowController {
+class WindowController: NSWindowController
+{
 
   @IBOutlet var playerView: AVPlayerView!
+  var volumeKVOToken: NSKeyValueObservation?
 
   override var windowNibName: NSNib.Name? {
     return NSNib.Name("DocumentWindow")
@@ -33,13 +35,25 @@ class WindowController: NSWindowController {
     }
 
     let player = AVPlayer(playerItem: AVPlayerItem(asset: asset))
-    player.volume = 0.5
     player.automaticallyWaitsToMinimizeStalling = true
+    player.volume = UserDefaults.standard.volume
+    self.playerView.allowsPictureInPicturePlayback = true
     self.playerView.player = player
+    // let's note volume changes, so we can update our default volume
+    volumeKVOToken = player.observe(\.volume, options: [.old, .new]) { [] (player, change) in
+      guard let oldValue = change.oldValue,
+            let newValue = change.newValue
+      else { return }
+      if oldValue == newValue { return }
+      if newValue != UserDefaults.standard.volume {
+        UserDefaults.standard.volume = newValue
+      }
+    }
   }
 
   deinit {
-    self.playerView?.player?.pause()
+    volumeKVOToken?.invalidate()
+    playerView?.player?.pause()
   }
 
 }
