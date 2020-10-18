@@ -90,6 +90,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSMenuDelegate {
     }
   }
 
+  @IBAction func showHelp(_ sender: Any?) {
+    NSWorkspace.shared.open(URL(string: "https://www.github.com/q-p/Cliptube")!)
+  }
+
 }
 
 
