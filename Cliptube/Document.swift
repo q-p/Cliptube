@@ -36,17 +36,22 @@ class Document: NSDocument
   }
 
 
-
   override func read(from url: URL, ofType typeName: String) throws {
     guard let id = findVideoIDs(url.absoluteString).first else {
       throw NSError(domain: "de.maven.Cliptube.ErrorDomain", code: -41, userInfo: [
         NSLocalizedDescriptionKey: "Couldn't find YouTube ID in URL"])
     }
-    try self.video = XCDYouTubeClient.default().blockingGetVideoWithIdentifier(id)
-    guard let asset = getAVAsset(video: video!) else {
+
+    let ytClient = XCDYouTubeClient.default()
+    let video = try ytClient.blockingGetVideoWithIdentifier(id)
+    let preferredURLs = getPreferredStreams(streams: video.streamURLs)
+    let verifiedURLs = try ytClient.blockingVerifyStreams(video: video, streams: preferredURLs)
+
+    guard let asset = getAVAsset(streams: verifiedURLs) else {
       throw NSError(domain: "de.maven.Cliptube.ErrorDomain", code: -42, userInfo: [
-        NSLocalizedDescriptionKey: "Couldn't obtain AVAsset for video"])
+        NSLocalizedDescriptionKey: "Couldn't obtain AVAsset for video from URLs = \(verifiedURLs)"])
     }
+    self.video = video
     self.asset = asset
     self.ytURL = url
   }

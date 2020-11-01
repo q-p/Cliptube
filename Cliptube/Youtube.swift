@@ -51,24 +51,6 @@ func findVideoIDs(_ maybeUrls: String) -> Set<String> {
 }
 
 
-extension XCDYouTubeClient {
-
-  func blockingGetVideoWithIdentifier(_ videoIdentifier: String) throws -> XCDYouTubeVideo? {
-    guard let queue = self.value(forKey: "queue") as? OperationQueue else {
-      throw NSError(domain: "de.maven.Cliptube.ErrorDomain", code: -1, userInfo: nil)
-    }
-
-    let operation = XCDYouTubeVideoOperation(videoIdentifier: videoIdentifier, languageIdentifier: self.languageIdentifier)
-    queue.addOperations([operation], waitUntilFinished: true)
-
-    if operation.video != nil {
-      return operation.video
-    }
-    throw operation.error!
-  }
-}
-
-
 let PreferredFormats: [AnyHashable] = [
   XCDYouTubeVideoQualityHTTPLiveStreaming,
   XCDYouTubeVideoQuality.HD720.rawValue as NSNumber,
@@ -77,14 +59,17 @@ let PreferredFormats: [AnyHashable] = [
 ]
 let SupportedFormats = Set(PreferredFormats)
 
-func getAVAsset(video: XCDYouTubeVideo) -> AVAsset? {
+func getAVAsset(streams: [AnyHashable: URL]) -> AVAsset? {
   for format in PreferredFormats {
-    guard let bestURL = video.streamURLs[format] else { continue }
+    guard let bestURL = streams[format] else { continue }
     return AVURLAsset(url: bestURL)
   }
   return nil
 }
 
+func getPreferredStreams(streams: [AnyHashable: URL]) -> [AnyHashable: URL] {
+  return streams.filter { PreferredFormats.contains($0.key) }
+}
 
 let PreferredFormatsVideo: [AnyHashable] = [
   138 as NSNumber, // MP4 4320p
@@ -146,4 +131,35 @@ func getAVAssetSplit(video: XCDYouTubeVideo) -> AVAsset? {
   try! audioTrack.insertTimeRange(CMTimeRange(start: CMTime.zero, duration: CMTimeMakeWithSeconds(video.duration, preferredTimescale: srcAudioTrack.naturalTimeScale)), of: srcAudioTrack, at: CMTime.zero)
 
   return composition.copy() as! AVComposition
+}
+
+
+extension XCDYouTubeClient {
+
+  func blockingGetVideoWithIdentifier(_ videoIdentifier: String) throws -> XCDYouTubeVideo {
+    guard let queue = self.value(forKey: "queue") as? OperationQueue else {
+      throw NSError(domain: "de.maven.Cliptube.ErrorDomain", code: -1, userInfo: nil)
+    }
+    let operation = XCDYouTubeVideoOperation(videoIdentifier: videoIdentifier, languageIdentifier: self.languageIdentifier)
+    queue.addOperations([operation], waitUntilFinished: true)
+    if let video = operation.video {
+      return video
+    }
+    throw operation.error ?? NSError(domain: "de.maven.Cliptube.ErrorDomain", code: -2, userInfo: [
+        NSLocalizedDescriptionKey: "XCDYouTubeClient: Neither video nor error"])
+  }
+
+  func blockingVerifyStreams(video: XCDYouTubeVideo, streams: [AnyHashable: URL]) throws -> [AnyHashable: URL] {
+    guard let queue = self.value(forKey: "queue") as? OperationQueue else {
+      throw NSError(domain: "de.maven.Cliptube.ErrorDomain", code: -1, userInfo: nil)
+    }
+    let operation = XCDYouTubeVideoQueryOperation(video: video, streamURLsToQuery:streams, options: nil, cookies: nil)
+    queue.addOperations([operation], waitUntilFinished: true)
+    if let verifiedURLs = operation.streamURLs {
+      return verifiedURLs
+    }
+    throw operation.error ?? NSError(domain: "de.maven.Cliptube.ErrorDomain", code: -3, userInfo: [
+        NSLocalizedDescriptionKey: "XCDYouTubeClient: Neither streamURLs nor error"])
+  }
+
 }
