@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A7D867A252BC14A00069CF3 /* AVKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7D8675252BC13800069CF3 /* AVKit.framework */; };
+		8A7E76A325713830001E4B52 /* SleepAsserter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7E76A225713830001E4B52 /* SleepAsserter.swift */; };
 		8AB871CF2531BDC600112915 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AB871CE2531BDC600112915 /* History.swift */; };
 		8ACFF3F7252B8135007B2FB4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF3F6252B8135007B2FB4 /* AppDelegate.swift */; };
 		8ACFF3F9252B8135007B2FB4 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACFF3F8252B8135007B2FB4 /* Document.swift */; };
@@ -24,6 +25,7 @@
 /* Begin PBXFileReference section */
 		8A7D8670252BC12500069CF3 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		8A7D8675252BC13800069CF3 /* AVKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVKit.framework; path = System/Library/Frameworks/AVKit.framework; sourceTree = SDKROOT; };
+		8A7E76A225713830001E4B52 /* SleepAsserter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepAsserter.swift; sourceTree = "<group>"; };
 		8AB871CE2531BDC600112915 /* History.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
 		8ACFF3F3252B8135007B2FB4 /* Cliptube.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Cliptube.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACFF3F6252B8135007B2FB4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				8ACFF42C252B840A007B2FB4 /* PasteboardPublisher.swift */,
 				8ACFF480252B9060007B2FB4 /* WindowController.swift */,
 				8ACFF42B252B840A007B2FB4 /* Youtube.swift */,
+				8A7E76A225713830001E4B52 /* SleepAsserter.swift */,
 			);
 			path = Cliptube;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				8ACFF3F9252B8135007B2FB4 /* Document.swift in Sources */,
 				8ACFF3F7252B8135007B2FB4 /* AppDelegate.swift in Sources */,
 				8ACFF47C252B8EF9007B2FB4 /* DocumentController.swift in Sources */,
+				8A7E76A325713830001E4B52 /* SleepAsserter.swift in Sources */,
 				8ACFF42E252B840A007B2FB4 /* PasteboardPublisher.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -329,7 +333,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 785W67QY73;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Cliptube/Info.plist;
@@ -337,7 +341,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = de.maven.Cliptube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -353,7 +357,7 @@
 				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 785W67QY73;
 				ENABLE_HARDENED_RUNTIME = YES;
 				INFOPLIST_FILE = Cliptube/Info.plist;
@@ -361,7 +365,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = de.maven.Cliptube;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -397,7 +401,7 @@
 			repositoryURL = "https://github.com/0xced/XCDYouTubeKit.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 2.14.1;
+				minimumVersion = 2.15.2;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

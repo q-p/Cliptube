@@ -47,7 +47,7 @@ class Document: NSDocument
     let preferredURLs = getPreferredStreams(streams: video.streamURLs)
     let verifiedURLs = try ytClient.blockingVerifyStreams(video: video, streams: preferredURLs)
 
-    guard let asset = getAVAsset(streams: verifiedURLs) else {
+    guard let asset = getAVAsset(video, streams: verifiedURLs) else {
       throw NSError(domain: "de.maven.Cliptube.ErrorDomain", code: -42, userInfo: [
         NSLocalizedDescriptionKey: "Couldn't obtain AVAsset for video from URLs = \(verifiedURLs)"])
     }
