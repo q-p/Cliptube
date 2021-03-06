@@ -14,7 +14,7 @@ class SleepAsserter
   func addBlock(reason: String = "Video playback") {
     if numAssertions == 0 {
       let noSleepReturn = IOPMAssertionCreateWithName(
-        kIOPMAssertPreventUserIdleSystemSleep as CFString,
+        kIOPMAssertPreventUserIdleDisplaySleep as CFString,
         IOPMAssertionLevel(kIOPMAssertionLevelOn),
         reason as CFString,
         &noSleepAssertionID)
